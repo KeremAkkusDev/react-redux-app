@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+//import { useState } from "react";
+import Header from "./components/Header";
+import Counter from "./components/Counter";
+import CounterActions from "./components/CounterActions";
+import { useSelector } from "react-redux";
 
 function App() {
+  //const [counter, setCounter] = useState(0);
+  const { dark } = useSelector((state) => state.SiteReducer);
+  const theme = dark ? "dark" : "light";
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="counter">
+      <div className={`count ${theme}`}>
+        <Header />
+        <Counter /* counter={counter} */ />
+        <CounterActions /* setCounter={setCounter} */ />
+      </div>
     </div>
   );
 }
